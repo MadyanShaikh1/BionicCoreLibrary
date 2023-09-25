@@ -29,8 +29,8 @@ namespace xUnitify.Common.ExampleRepository
             try
             {
                 var getTeamResult = (await genericRepository.GetKataQuery()
-.Select("FirstName")
-    .GetAsync<string>()).ToList();
+                .Select("FirstName")
+                .GetAsync<string>()).ToList();
             }
             catch (Exception)
             {
