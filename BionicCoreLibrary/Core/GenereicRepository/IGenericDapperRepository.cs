@@ -6,7 +6,7 @@ namespace BionicCoreLibrary.Core.GenereicRepository
 {
     public interface IGenericDapperRepository<TEntity> where TEntity : class
     {
-        Query GetKataQuery();
+        Query EntityQuery();
     }
 }
 public class GenericDapperRepository<TEntity> : IGenericDapperRepository<TEntity> where TEntity : class
@@ -18,7 +18,7 @@ public class GenericDapperRepository<TEntity> : IGenericDapperRepository<TEntity
         this.sqlKataQuery = sqlKataQuery;
     }
 
-    public Query GetKataQuery()
+    public Query EntityQuery()
     {
         return sqlKataQuery.Query(typeof(TEntity).Name.ToString());
     }

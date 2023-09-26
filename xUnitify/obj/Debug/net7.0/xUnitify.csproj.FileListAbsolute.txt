@@ -132,3 +132,10 @@ C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\obj\Debug\n
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\obj\Debug\net7.0\xUnitify.pdb
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\obj\Debug\net7.0\xUnitify.genruntimeconfig.cache
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\obj\Debug\net7.0\ref\xUnitify.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\xUnitify\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

@@ -1,13 +1,13 @@
 ﻿using BionicCoreLibrary.Core;
+using BionicCoreLibrary.Core.Concrete;
 using BionicCoreLibrary.Core.GenereicRepository;
-using BionicCoreLibrary.DapperRepository.Concrete;
 
 namespace BionicCoreLibrary.DapperRepository.Repositries.BaseRepository
 {
-    public interface IUserDapperRepository : IGenericDapperRepository<AspNetUsers>
+    public interface IUserDapperRepository : IGenericDapperRepository<Users>
     {
     }
-    public class UserDapperRepository : GenericDapperRepository<AspNetUsers>, IUserDapperRepository
+    public class UserDapperRepository : GenericDapperRepository<Users>, IUserDapperRepository
     {
         public UserDapperRepository(SqlKataQuery sqlKataQuery) : base(sqlKataQuery)
         {

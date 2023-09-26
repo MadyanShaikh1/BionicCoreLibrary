@@ -54,3 +54,10 @@ C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bi
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

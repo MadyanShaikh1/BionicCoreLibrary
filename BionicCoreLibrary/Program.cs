@@ -1,3 +1,4 @@
+using BionicCoreLibrary.Authentication;
 using BionicCoreLibrary.Common.Constant;
 using BionicCoreLibrary.Infrastructure;
 
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.InitializeDapper(builder.Configuration.GetConnectionString(Constants.DataBase));
+builder.Services.Authentication(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

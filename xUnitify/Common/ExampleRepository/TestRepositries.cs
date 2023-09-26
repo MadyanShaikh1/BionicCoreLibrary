@@ -1,10 +1,9 @@
 ﻿using BionicCoreLibrary.Core.GenereicRepository;
-using BionicCoreLibrary.DapperRepository.Concrete;
 using BionicCoreLibrary.DapperRepository.Repositries.BaseRepository;
 using Microsoft.Extensions.DependencyInjection;
 using xUnitify.Common.ExampleEntity;
 using SqlKata.Execution;
-
+using BionicCoreLibrary.Core.Concrete;
 
 namespace xUnitify.Common.ExampleRepository
 {
@@ -13,7 +12,6 @@ namespace xUnitify.Common.ExampleRepository
     {
         private readonly IGenericDapperRepository<Team> genericRepository;
         private readonly IUserDapperRepository userDapperRepository;
-        //private readonly Mock<IGenericRepository<Team>> genericRepositoryMock;
 
         public RepositriesTests()
         {
@@ -28,7 +26,7 @@ namespace xUnitify.Common.ExampleRepository
         {
             try
             {
-                var getTeamResult = (await genericRepository.GetKataQuery()
+                var getTeamResult = (await genericRepository.EntityQuery()
                 .Select("FirstName")
                 .GetAsync<string>()).ToList();
             }
@@ -43,8 +41,8 @@ namespace xUnitify.Common.ExampleRepository
         [Fact]
         public async Task UserDapperRepositoryTests()
         {
-            var getTeamResult = (await userDapperRepository.GetKataQuery()
-                .GetAsync<AspNetUsers>()).ToList();
+            var getTeamResult = (await userDapperRepository.EntityQuery()
+                .GetAsync<Users>()).ToList();
 
         }
     }
