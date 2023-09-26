@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
 
 namespace BionicCoreLibrary.Common.Helper
 {
