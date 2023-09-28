@@ -1,4 +1,5 @@
 ﻿using BionicCoreLibrary.Common.Constant;
+using BionicCoreLibrary.Core.Configuration;
 using BionicCoreLibrary.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,7 @@ public class TestFixture
 {
     public ServiceProvider ServiceProvider { get; }
     public IConfiguration Configuration { get; }
+    public Configurations Configurations { get; }
     public TestFixture()
     {
         Configuration = new ConfigurationBuilder()
@@ -18,7 +20,8 @@ public class TestFixture
         var services = new ServiceCollection();
 
         // Configure your services with Scrutor
-        services.InitializeDapper(connectionStrings);
+        services.InitializeDapper(Configurations);
+        services.AddInfraStructure();
         ServiceConfiguration.Configure(services);
 
         ServiceProvider = services.BuildServiceProvider();

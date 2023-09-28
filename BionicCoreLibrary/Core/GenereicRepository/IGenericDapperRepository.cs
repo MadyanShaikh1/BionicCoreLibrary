@@ -6,20 +6,24 @@ namespace BionicCoreLibrary.Core.GenereicRepository
 {
     public interface IGenericDapperRepository<TEntity> where TEntity : class
     {
-        Query EntityQuery();
+        Query EntityQuery(bool overrideConnection = false);
     }
 }
 public class GenericDapperRepository<TEntity> : IGenericDapperRepository<TEntity> where TEntity : class
 {
-    private readonly SqlKataQuery sqlKataQuery;
+    private readonly BionicSqlKataConnecton BionicSqlKataConnecton;
+    private readonly SecondarySqlKataConnection SecondarySqlKataConnection;
 
-    public GenericDapperRepository(SqlKataQuery sqlKataQuery)
+    public GenericDapperRepository(BionicSqlKataConnecton bionicSqlKataConnecton,
+        SecondarySqlKataConnection secondarySqlKataConnection)
     {
-        this.sqlKataQuery = sqlKataQuery;
+        this.BionicSqlKataConnecton = bionicSqlKataConnecton;
+        this.SecondarySqlKataConnection = secondarySqlKataConnection;
     }
-
-    public Query EntityQuery()
+    public Query EntityQuery(bool overrideConnection)
     {
-        return sqlKataQuery.Query(typeof(TEntity).Name.ToString());
+        return overrideConnection ?
+            BionicSqlKataConnecton.Query(typeof(TEntity).Name.ToString()) :
+            SecondarySqlKataConnection.Query(typeof(TEntity).Name.ToString());
     }
 }

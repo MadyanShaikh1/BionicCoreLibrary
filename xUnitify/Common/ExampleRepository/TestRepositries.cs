@@ -18,32 +18,18 @@ namespace xUnitify.Common.ExampleRepository
             genericRepository = ServiceProvider.GetService<IGenericDapperRepository<Team>>();
             userDapperRepository = ServiceProvider.GetService<IUserDapperRepository>();
         }
-
-
-
         [Fact]
         public async Task TestRepositries()
         {
-            try
-            {
-                var getTeamResult = (await genericRepository.EntityQuery()
-                .Select("FirstName")
-                .GetAsync<string>()).ToList();
-            }
-            catch (Exception)
-            {
-
-          
-            }
-
-
+            var getTeamResult = (await genericRepository.EntityQuery()
+            .Select("FirstName")
+            .GetAsync<string>()).ToList();
         }
         [Fact]
         public async Task UserDapperRepositoryTests()
         {
             var getTeamResult = (await userDapperRepository.EntityQuery()
                 .GetAsync<Users>()).ToList();
-
         }
     }
 }

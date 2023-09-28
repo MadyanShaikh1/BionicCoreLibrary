@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "w+J0v0PvsZdFUu4lP46S4dzg9xZNoulfPP6C1eqzZ9CYPKjDV2TxVoltCCGk1qsAw/nZq1CsL1GGFhb6Ab8kmA==",
+  "dgSpecHash": "gRuqaXEO6uEZ65VB89WvgJ6NtKb/QtfelaGrIIogWYwwsTeUvUDLVTUcCj9HK7vZatwexMIsTR1AuPOK8K4OEg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bionic Computer\\Documents\\GitHub\\BionicCoreLibrary\\BionicCoreLibrary\\BionicCoreLibrary.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bionic Computer\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Bionic Computer\\.nuget\\packages\\dapper\\2.0.151\\dapper.2.0.151.nupkg.sha512",
     "C:\\Users\\Bionic Computer\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Bionic Computer\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.11\\microsoft.aspnetcore.authentication.jwtbearer.7.0.11.nupkg.sha512",

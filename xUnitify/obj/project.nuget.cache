@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FzWAs36QpXVkCnvYt3iNHds/+bNzJ9gnULACCIF4RTWiGjLDmaG/rAaX3W2nvyqeRnXxV/K1RwrbqiyWJcFuAA==",
+  "dgSpecHash": "Htj/OOCLGDiTnrp+3Rg8PpSFCO8rrOEccwLHv3qWatsm0+bLS195n4nYr8DKZxls2DJ34JeQ53zepJ2dl1ZD1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bionic Computer\\Documents\\GitHub\\BionicCoreLibrary\\xUnitify\\xUnitify.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bionic Computer\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Bionic Computer\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\Bionic Computer\\.nuget\\packages\\dapper\\2.0.151\\dapper.2.0.151.nupkg.sha512",
     "C:\\Users\\Bionic Computer\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

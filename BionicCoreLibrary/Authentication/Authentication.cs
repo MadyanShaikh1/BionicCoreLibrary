@@ -1,5 +1,6 @@
 ﻿using BionicCoreLibrary.Common.Constant;
 using BionicCoreLibrary.Core.Concrete;
+using BionicCoreLibrary.Core.Configuration;
 using BionicCoreLibrary.DapperRepository.Repositries.BaseRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -12,10 +13,10 @@ namespace BionicCoreLibrary.Authentication
 {
     public static class Authentications
     {
-        public static async void Authentication(this IServiceCollection serviceDescriptors,
-            IConfiguration configuration)
-        {
-            JwtConfiguration tenantConfiguration = await TenantConfigurations(serviceDescriptors, configuration);
+        public static async void Authentication(this IApplicationBuilder applicationBuilder, IServiceCollection serviceDescriptors,
+            Configurations configuration)
+         {
+            JwtConfiguration tenantConfiguration = await TenantConfigurations(applicationBuilder, serviceDescriptors, configuration);
 
             serviceDescriptors.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -32,31 +33,33 @@ namespace BionicCoreLibrary.Authentication
                 };
             });
 
+            serviceDescriptors.BuildServiceProvider();
         }
-        private static async Task<JwtConfiguration> TenantConfigurations(IServiceCollection serviceDescriptors, IConfiguration configuration)
+
+        private static async Task<JwtConfiguration> TenantConfigurations(IApplicationBuilder applicationBuilder, IServiceCollection serviceDescriptors, Configurations configuration)
         {
-            ITenantRepository? tenantDapperRepository = serviceDescriptors.BuildServiceProvider()
+            ITenantRepository? tenantDapperRepository = applicationBuilder.ApplicationServices
                 .GetService<ITenantRepository>();
 
-            IJwtTenantConfigurationRepository? jwtTenantConfiguration = serviceDescriptors.BuildServiceProvider()
+            IJwtTenantConfigurationRepository? jwtTenantConfiguration = applicationBuilder.ApplicationServices
                 .GetService<IJwtTenantConfigurationRepository>();
 
-            IJwtConfigurationRepository? jwtConfiguration = serviceDescriptors.BuildServiceProvider()
+            IJwtConfigurationRepository? jwtConfiguration = applicationBuilder.ApplicationServices
                 .GetService<IJwtConfigurationRepository>();
 
-            string? tenantName = configuration.GetConnectionString(Constants.TenantName);
+            var tenantName = configuration.TenantConfiguration.TenantName;
 
-            int tenantId = await tenantDapperRepository.EntityQuery()
+            int tenantId = await tenantDapperRepository.EntityQuery(overrideConnection: true)
                    .Select("TenantID")
                    .Where("TenantName", tenantName)
                    .FirstOrDefaultAsync<int>();
 
-            int? jwtConfigurationId = await jwtTenantConfiguration.EntityQuery()
+            int? jwtConfigurationId = await jwtTenantConfiguration.EntityQuery(overrideConnection: true)
                 .Select("JwtConfigurationID")
                 .Where("TenantID", tenantId)
                 .FirstOrDefaultAsync<int>();
 
-            JwtConfiguration tenantConfiguration = await jwtConfiguration.EntityQuery()
+            JwtConfiguration tenantConfiguration = await jwtConfiguration.EntityQuery(overrideConnection: true)
                 .Where("Id", jwtConfigurationId)
                 .FirstOrDefaultAsync<JwtConfiguration>();
             return tenantConfiguration;

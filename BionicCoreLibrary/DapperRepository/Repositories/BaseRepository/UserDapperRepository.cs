@@ -9,10 +9,8 @@ namespace BionicCoreLibrary.DapperRepository.Repositries.BaseRepository
     }
     public class UserDapperRepository : GenericDapperRepository<Users>, IUserDapperRepository
     {
-        public UserDapperRepository(SqlKataQuery sqlKataQuery) : base(sqlKataQuery)
+        public UserDapperRepository(BionicSqlKataConnecton bionicSqlKataConnecton, SecondarySqlKataConnection secondarySqlKataConnection) : base(bionicSqlKataConnecton, secondarySqlKataConnection)
         {
-
         }
-
     }
 }

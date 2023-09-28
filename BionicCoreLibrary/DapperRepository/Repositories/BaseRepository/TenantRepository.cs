@@ -7,12 +7,10 @@ namespace BionicCoreLibrary.DapperRepository.Repositries.BaseRepository
     public interface ITenantRepository : IGenericDapperRepository<Tenants>
     {
     }
-    public class TenantRepository : GenericDapperRepository<Users>, ITenantRepository
+    public class TenantRepository : GenericDapperRepository<Tenants>, ITenantRepository
     {
-        public TenantRepository(SqlKataQuery sqlKataQuery) : base(sqlKataQuery)
+        public TenantRepository(BionicSqlKataConnecton bionicSqlKataConnecton, SecondarySqlKataConnection secondarySqlKataConnection) : base(bionicSqlKataConnecton, secondarySqlKataConnection)
         {
-
         }
-
     }
 }

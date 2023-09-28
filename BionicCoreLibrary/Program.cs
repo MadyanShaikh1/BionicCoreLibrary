@@ -1,17 +1,22 @@
 using BionicCoreLibrary.Authentication;
 using BionicCoreLibrary.Common.Constant;
+using BionicCoreLibrary.Core.Configuration;
+using BionicCoreLibrary.DependancyInjections.DependancyExtensions;
 using BionicCoreLibrary.Infrastructure;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Services.LoadConfiguration(builder.Configuration);
+var serviceDescriptor = new ServiceCollection();
 
-// Add services to the container.
 
+// Add services to the 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddSwaggerGen();
-builder.Services.InitializeDapper(builder.Configuration.GetConnectionString(Constants.DataBase));
-builder.Services.Authentication(builder.Configuration);
+builder.Services.InitializeDapper(configuration);
+builder.Services.AddInfraStructure();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,7 +26,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
+app.Authentication(serviceDescriptor, configuration);
+app.UseAuthenticationMiddleware();
+//app.UseAuthorization();
 
 app.MapControllers();
 

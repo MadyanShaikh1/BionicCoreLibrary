@@ -61,3 +61,4 @@ C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bi
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Bionic Computer\Documents\GitHub\BionicCoreLibrary\BionicCoreLibrary\bin\Debug\net7.0\BCrypt.Net-Next.dll

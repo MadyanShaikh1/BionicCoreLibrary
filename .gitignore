@@ -5,3 +5,6 @@ BionicCoreLibrary/.vs/BionicCoreLibrary/FileContentIndex/52756d29-124e-42f3-8fcd
 *.v2
 *.vsidx
 BionicCoreLibrary/.vs/BionicCoreLibrary/v17/.suo
+*.dll
+*.pdb
+BionicCoreLibrary/.vs/BionicCoreLibrary/v17/.suo

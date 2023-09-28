@@ -9,7 +9,8 @@ namespace BionicCoreLibrary.DapperRepository.Repositries.BaseRepository
     }
     public class JwtConfigurationRepository : GenericDapperRepository<JwtConfiguration>, IJwtConfigurationRepository
     {
-        public JwtConfigurationRepository(SqlKataQuery sqlKataQuery) : base(sqlKataQuery)
+        public JwtConfigurationRepository(BionicSqlKataConnecton bionicSqlKataConnecton, SecondarySqlKataConnection secondarySqlKataConnection) :
+            base(bionicSqlKataConnecton, secondarySqlKataConnection)
         {
 
         }
