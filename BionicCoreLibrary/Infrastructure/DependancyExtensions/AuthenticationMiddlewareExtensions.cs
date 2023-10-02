@@ -1,4 +1,4 @@
-﻿namespace BionicCoreLibrary.DependancyInjections.DependancyExtensions
+﻿namespace BionicCoreLibrary.Infrastructure.DependancyExtensions
 {
     public static class AuthenticationMiddlewareExtensions
     {

@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BionicCoreLibrary.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
+    [ApiController]
+    [Authorize]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,8 +20,8 @@ namespace BionicCoreLibrary.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet]
+        public IEnumerable<WeatherForecast> GetWeather()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

@@ -3,6 +3,7 @@ using BionicCoreLibrary.Core.Concrete;
 using BionicCoreLibrary.Core.Configuration;
 using BionicCoreLibrary.DapperRepository.Repositries.BaseRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SqlKata.Execution;
 using System.Reflection.Metadata;
@@ -13,12 +14,14 @@ namespace BionicCoreLibrary.Authentication
 {
     public static class Authentications
     {
-        public static async void Authentication(this IApplicationBuilder applicationBuilder, IServiceCollection serviceDescriptors,
+        public static async void Authentication(this IServiceCollection serviceDescriptors,
             Configurations configuration)
-         {
-            JwtConfiguration tenantConfiguration = await TenantConfigurations(applicationBuilder, serviceDescriptors, configuration);
-
-            serviceDescriptors.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        {
+            serviceDescriptors.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // Use your authentication scheme, e.g., JwtBearerDefaults.AuthenticationScheme
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;    // Use the same authentication scheme for challenges
+            })
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -27,13 +30,11 @@ namespace BionicCoreLibrary.Authentication
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = tenantConfiguration.Issuer,
-                    ValidAudience = tenantConfiguration.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tenantConfiguration.Key))
+                    ValidIssuer = configuration.JwtSettings.Issuer,
+                    ValidAudience = configuration.JwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.JwtSettings.SecretKey))
                 };
             });
-
-            serviceDescriptors.BuildServiceProvider();
         }
 
         private static async Task<JwtConfiguration> TenantConfigurations(IApplicationBuilder applicationBuilder, IServiceCollection serviceDescriptors, Configurations configuration)

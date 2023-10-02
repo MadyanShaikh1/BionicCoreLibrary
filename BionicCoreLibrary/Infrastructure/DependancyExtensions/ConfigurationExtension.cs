@@ -2,7 +2,7 @@
 using BionicCoreLibrary.Core.CoreServices;
 using System.Configuration;
 
-namespace BionicCoreLibrary.DependancyInjections.DependancyExtensions
+namespace BionicCoreLibrary.Infrastructure.DependancyExtensions
 {
     public static class ConfigurationExtension
     {

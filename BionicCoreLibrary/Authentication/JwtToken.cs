@@ -1,7 +1,10 @@
 ﻿using BionicCoreLibrary.Common.Constant;
 using BionicCoreLibrary.Core.Concrete;
+using BionicCoreLibrary.Core.Configuration;
+using BionicCoreLibrary.Core.Sessions;
 using BionicCoreLibrary.DapperRepository.Repositries.BaseRepository;
-using BionicCoreLibrary.DependancyInjections.TransientDependancy;
+using BionicCoreLibrary.Infrastructure.DependancyInjections;
+using BionicCoreLibrary.Infrastructure.DependancyInjections.TransientDependancy;
 using Microsoft.IdentityModel.Tokens;
 using SqlKata.Execution;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,28 +17,25 @@ namespace BionicCoreLibrary.Authentication
     {
         Task<string> GenerateJwtToken(Users user);
     }
-    public class JwtToken : IJwtToken
+    public class JwtToken : MetaGlintDependancy, IJwtToken
     {
         private readonly ITenantRepository tenantRepository;
         private readonly IJwtTenantConfigurationRepository jwtTenantConfigurationRepository;
         private readonly IJwtConfigurationRepository jwtConfigurationRepository;
-        private readonly IConfiguration configuration;
 
         public JwtToken(ITenantRepository tenantRepository,
             IJwtTenantConfigurationRepository jwtTenantConfigurationRepository,
-            IJwtConfigurationRepository jwtConfigurationRepository, IConfiguration configuration)
+            IJwtConfigurationRepository jwtConfigurationRepository, Configurations configurations, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor, configurations)
         {
             this.tenantRepository = tenantRepository;
             this.jwtTenantConfigurationRepository = jwtTenantConfigurationRepository;
             this.jwtConfigurationRepository = jwtConfigurationRepository;
-            this.configuration = configuration;
         }
         public async Task<string> GenerateJwtToken(Users user)
         {
-            string? tenantName = configuration.GetConnectionString(Constants.TenantName);
             int tenantId = await tenantRepository.EntityQuery(overrideConnection: true)
                    .Select("TenantID")
-                   .Where("TenantName", tenantName)
+                   .Where("TenantName", Configurations.TenantConfiguration.TenantName)
                    .FirstOrDefaultAsync<int>();
 
             user.TenantID = tenantId;
@@ -70,6 +70,7 @@ namespace BionicCoreLibrary.Authentication
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
     }
 }

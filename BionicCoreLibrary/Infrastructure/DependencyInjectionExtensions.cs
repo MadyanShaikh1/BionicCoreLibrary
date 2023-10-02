@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
 using BionicCoreLibrary.Core.GenereicRepository;
-using BionicCoreLibrary.DependancyInjections.ScopedDependancy;
-using BionicCoreLibrary.DependancyInjections.SingletonDependancy;
-using BionicCoreLibrary.DependancyInjections.TransientDependancy;
+using BionicCoreLibrary.Infrastructure.DependancyInjections;
+using BionicCoreLibrary.Infrastructure.DependancyInjections.ScopedDependancy;
+using BionicCoreLibrary.Infrastructure.DependancyInjections.SingletonDependancy;
+using BionicCoreLibrary.Infrastructure.DependancyInjections.TransientDependancy;
 
 public static class DependencyInjectionExtensions
 {
@@ -40,13 +41,17 @@ public static class DependencyInjectionExtensions
         serviceDescriptors.Scan(scan => scan.FromAssemblyDependencies(Assembly.GetExecutingAssembly())
         .AddClasses(x => x.AssignableTo(typeof(IScopedDependancy)))
         .AsImplementedInterfaces()
-        .WithTransientLifetime());
+        .WithScopedLifetime());
 
         serviceDescriptors.Scan(scan => scan.FromAssemblyDependencies(Assembly.GetExecutingAssembly())
         .AddClasses(x => x.AssignableTo(typeof(ISingletonDependancy)))
         .AsImplementedInterfaces()
-        .WithTransientLifetime());
+        .WithSingletonLifetime());
 
+        serviceDescriptors.Scan(scan => scan.FromAssemblyDependencies(Assembly.GetExecutingAssembly())
+        .AddClasses(x => x.AssignableTo(typeof(MetaGlintDependancy)))
+        .AsImplementedInterfaces()
+        .WithScopedLifetime());
 
     }
 }

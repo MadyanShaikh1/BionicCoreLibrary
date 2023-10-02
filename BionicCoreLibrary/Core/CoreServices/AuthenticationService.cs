@@ -2,11 +2,11 @@
 using BionicCoreLibrary.Authentication;
 using BionicCoreLibrary.Core.Concrete;
 using BionicCoreLibrary.DapperRepository.Repositries.BaseRepository;
-using BionicCoreLibrary.DependancyInjections.TransientDependancy;
 using SqlKata.Execution;
 using BCrypt.Net;
 using System.Reflection.Metadata;
 using BionicCoreLibrary.Common.Constant;
+using BionicCoreLibrary.Infrastructure.DependancyInjections.TransientDependancy;
 
 namespace BionicCoreLibrary.Core.CoreServices
 {
@@ -34,7 +34,7 @@ namespace BionicCoreLibrary.Core.CoreServices
             if (userDetails == null)
                 return string.Concat(Constants.AuthenticationFailed, ", ", Constants.RecordNotFound);
 
-            var isUserAuthenticated = BCrypt.Net.BCrypt.Verify(users.Password, userDetails.Password);
+            bool isUserAuthenticated = isUserAuthenticated = BCrypt.Net.BCrypt.Verify(users.Password, userDetails.Password);
 
             if (!isUserAuthenticated)
                 return string.Concat(Constants.AuthenticationFailed, ", ", Constants.PassworIncorrect);

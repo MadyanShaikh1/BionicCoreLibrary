@@ -1,7 +1,5 @@
 ﻿using BionicCoreLibrary.Core.Concrete;
 using BionicCoreLibrary.Core.CoreServices;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BionicCoreLibrary.Controllers
@@ -17,7 +15,7 @@ namespace BionicCoreLibrary.Controllers
             this.authenticationService = authenticationService;
         }
 
-        [AllowAnonymous]
+        [HttpPost]
         public async Task<IActionResult> Authenticate(Users users)
         {
             string result = await authenticationService.Authenticate(users);
